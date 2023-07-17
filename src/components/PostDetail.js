@@ -9,19 +9,19 @@ export default function PostDetail() {
   const { postId } = useParams();
   const [data, setData] = useState({});
   const [comments, setComments] = useState([]);
-  const [comment,setComment]=useState("fdjj");
-  const url = "http://localhost:8000";
+  const [comment, setComment] = useState("fdjj");
+  const url = "https://backend-eexu.onrender.com";
 
   useEffect(() => {
-    const url = "http://localhost:8000/feeds/id/" + postId;
-    const url2 = "http://localhost:8000/comments/all";
+    const url = "https://backend-eexu.onrender.com/feeds/id/" + postId;
+    const url2 = "https://backend-eexu.onrender.com/comments/all";
     axios
       .get(url)
       .then((res) => {
         setData(res.data);
         console.log(res.data)
       })
-      .catch((err) => {});
+      .catch((err) => { });
     axios
       .post(url2, {
         postId: postId,
@@ -29,39 +29,39 @@ export default function PostDetail() {
       .then((res) => {
         setComments(res.data);
       })
-      .catch((err) => {});
-    return () => {};
+      .catch((err) => { });
+    return () => { };
   }, []);
 
-  const addComment=()=>{
-    const url3 = "http://localhost:8000/comments/add";
-    const token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjIzOTk3LCJpYXQiOjE2ODkxMzc1OTcsImp0aSI6IjVhNTlkMzYwODQ3MzQyYzI5M2QzMjJmNTQwMmRhZTMwIiwidXNlcl9pZCI6MX0.krXDcMYwLgp0HaacdtYMlEIbwJ2fs2Lc6Z85-dy060g"
-    console.log("Bearer"+token)
+  const addComment = () => {
+    const url3 = "https://backend-eexu.onrender.com/comments/add";
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjIzOTk3LCJpYXQiOjE2ODkxMzc1OTcsImp0aSI6IjVhNTlkMzYwODQ3MzQyYzI5M2QzMjJmNTQwMmRhZTMwIiwidXNlcl9pZCI6MX0.krXDcMYwLgp0HaacdtYMlEIbwJ2fs2Lc6Z85-dy060g"
+    console.log("Bearer" + token)
     axios
-    .post(url3, {
-      commentPost: postId,
-      entry:comment
-      
-    },
-    {
-      headers:{
-        Authorization: "Bearer "+token
+      .post(url3, {
+        commentPost: postId,
+        entry: comment
 
       },
-    }
-   
-    )
-    .then((res) => {
-      console.log(typeof(res.data))
-      console.log("the data is",res.data)
-      let data=[res.data];
-      console.log(data)
-      setComments(data.concat(comments))
-      console.log(comments)
+        {
+          headers: {
+            Authorization: "Bearer " + token
 
-      // setComments(res.data);
-    })
-    .catch((err) => {});
+          },
+        }
+
+      )
+      .then((res) => {
+        console.log(typeof (res.data))
+        console.log("the data is", res.data)
+        let data = [res.data];
+        console.log(data)
+        setComments(data.concat(comments))
+        console.log(comments)
+
+        // setComments(res.data);
+      })
+      .catch((err) => { });
 
 
   }
@@ -109,15 +109,15 @@ export default function PostDetail() {
             {/* <div className="myFlex">3days ago</div> */}
           </div>
           <div className="h5 flexCenter">
-            <input className="w85 h90 cm-in" 
-             onChange={(e)=>{setComment(e.target.value)}} 
-             value={comment}
-             placeholder="Add a comment"/>
-             
+            <input className="w85 h90 cm-in"
+              onChange={(e) => { setComment(e.target.value) }}
+              value={comment}
+              placeholder="Add a comment" />
+
             <div className=" w15 flexCenter cm-cb" onClick={addComment}>
               comment
 
-              
+
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ import React, { Component } from 'react'
 export default class UserProfile extends Component {
     
     
-    url="http://localhost:8000"
+    url="https://backend-eexu.onrender.com"
     constructor()
     {
         super();
@@ -27,8 +27,8 @@ export default class UserProfile extends Component {
         // console.log(this.props)
         let username = window.location.pathname.split('/').pop()
         console.log(username)
-        const url="http://localhost:8000/profile/userfeeds"
-        const url2="http://localhost:8000/profile/userprofile"
+        const url="https://backend-eexu.onrender.com/profile/userfeeds"
+        const url2="https://backend-eexu.onrender.com/profile/userprofile"
         
         axios.post(url2,
             {

@@ -11,7 +11,7 @@ export default class Home extends Component {
   }
   getPosts=()=>{
 console.log(this.state.page)
-    let url="http://localhost:8000/feeds/page"
+    let url="https://backend-eexu.onrender.com/feeds/page"
 
     console.log("something ");
     
